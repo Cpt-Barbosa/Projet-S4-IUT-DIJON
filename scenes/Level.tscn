@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 10 )
+
+[sub_resource type="ExternalTexture" id=2]
+
+[node name="Level" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 117, 590 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 395, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Floor"]
+position = Vector2( 395.5, 8.01682e-06 )
+scale = Vector2( 1023, 20 )
+texture = SubResource( 2 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2( 865, 410 )
+rotation = -1.55734
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 395, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Wall"]
+position = Vector2( 395.5, 8.01682e-06 )
+scale = Vector2( 1023, 20 )
+texture = SubResource( 2 )
+
+[node name="Joueur" parent="." instance=ExtResource( 1 )]
+position = Vector2( 663, 547 )
+g = 98

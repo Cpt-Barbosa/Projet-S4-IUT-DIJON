@@ -1,39 +1,52 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ObjetTest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ObjetPorte.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Test.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 512, 10 )
+extents = Vector2( 512.5, 10 )
 
-[sub_resource type="ExternalTexture" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 522.75, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 107.5, 10 )
 
 [node name="Level" type="Node2D"]
+position = Vector2( 1, 25 )
+
+[node name="ObjetTest" parent="." instance=ExtResource( 2 )]
+position = Vector2( 562, 549 )
+
+[node name="ObjetPorte" parent="." instance=ExtResource( 3 )]
+position = Vector2( 839, 549 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2( 117, 590 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 395, 0 )
+position = Vector2( 512.5, 591 )
 shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Floor"]
-position = Vector2( 395.5, 8.01682e-06 )
-scale = Vector2( 1023, 20 )
-texture = SubResource( 2 )
 
 [node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2( 865, 410 )
-rotation = -1.55734
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2( 395, 0 )
-shape = SubResource( 1 )
+position = Vector2( 865, 17.25 )
+rotation = 1.5708
+shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Wall"]
-position = Vector2( 395.5, 8.01682e-06 )
-scale = Vector2( 1023, 20 )
-texture = SubResource( 2 )
+[node name="Porte" type="StaticBody2D" parent="."]
+position = Vector2( 868, 472 )
+rotation = 1.5938
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porte"]
+position = Vector2( -1, 0 )
+shape = SubResource( 3 )
 
 [node name="Joueur" parent="." instance=ExtResource( 1 )]
 position = Vector2( 663, 547 )
 g = 98
+
+[node name="ObjetInterractible" parent="." instance=ExtResource( 4 )]
+position = Vector2( 345, 552 )

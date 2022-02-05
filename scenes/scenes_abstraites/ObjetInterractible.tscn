@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 18.0
+
+[node name="ObjetInterractible" type="Area2D"]
+
+[node name="CollisionObjet" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Texte" type="RichTextLabel" parent="."]
+margin_left = -3.0
+margin_top = -38.0
+margin_right = 37.0
+margin_bottom = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

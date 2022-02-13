@@ -7,12 +7,16 @@ export (int) var crawl_speed = 100
 #récupère la valeur par défaut de la gravité
 export (int) var g = 4500
 
+var can_hide = false
+var hidden=false
 var velocity = Vector2.ZERO
 #-1 si on va à gauche +1 si à droite
 var horizontal_direction=0
 
 onready var standing_collision = $HitboxDebout
 onready var crouching_collision = $HitboxAccr
+onready var flashlight = $Lampe
+onready var sprite = $Sprite
 
 func _ready():
 	pass # Replace with function body.
@@ -24,21 +28,38 @@ func apply_movement(var speed):
 func apply_gravity(delta):
 	velocity.y += g*delta
 	
-func handle_move_input():
+	
+func get_input():
 	horizontal_direction=0
 	if Input.is_action_pressed("move_left"):
 		horizontal_direction = -1.0
 	
 	if Input.is_action_pressed("move_right"):
 		horizontal_direction = 1.0
+	#pour les faires les tests si jamais on change de vitesse
+	#print(velocity.x)
+	if Input.is_action_just_pressed("move_left"):
+		sprite.set_flip_h( true)
+		flashlight.rotation= deg2rad(180)
+		flashlight.position=Vector2(-60,flashlight.position.y)
 		
+	if Input.is_action_just_pressed("move_right"):
+		sprite.set_flip_h( false)
+		flashlight.rotation= deg2rad(0)
+		flashlight.position=Vector2(60,flashlight.position.y)
+		
+	if Input.is_action_just_pressed("flashlight"):
+		if flashlight.is_enabled():
+			flashlight.set_enabled(false)
+		else:
+			flashlight.set_enabled(true)
 	
 #fonction a appeler quand le joueur VA s'accroupir	
 func on_crouch():
 	#à supprimer plus tard c'est pour avoir une idée visuelle
-	var sprite = get_node("Sprite")
 	sprite.scale = Vector2(1,0.5)
 	sprite.offset = Vector2(0,32)
+	flashlight.position.y+=20
 	
 	standing_collision.disabled=true
 	crouching_collision.disabled=false
@@ -46,9 +67,9 @@ func on_crouch():
 #quand le joueur VA se lever
 func on_stand():
 	#à supprimer plus tard c'est pour avoir une idée visuelle
-	var sprite = get_node("Sprite")
 	sprite.scale = Vector2(1,1)
 	sprite.offset = Vector2(0,0)
+	flashlight.position.y-=20
 	
 	standing_collision.disabled=false
 	crouching_collision.disabled=true
@@ -85,3 +106,11 @@ func can_stand() -> bool:
 	#si les résultats sont vides le joueur ne collisionnerais avec rien si il se levait donc on renvoie true
 	#sinon si la liste n'est pas vide cela veut dire que l'on collisionnerait avec quelque chose donc on ne peut pas se lever
 	return results.size()==0
+	
+func can_hide(body):
+	if body.name=="Joueur":
+		can_hide=true
+	
+func cannot_hide(body):
+	if body.name=="Joueur":
+		can_hide=false

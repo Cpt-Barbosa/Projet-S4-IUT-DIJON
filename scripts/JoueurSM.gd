@@ -1,6 +1,7 @@
 extends StateMachine
 
-onready var affEtat = get_parent().get_node("AffEtat")
+onready var affEtat = parent.get_node("AffEtat")
+onready var sprite = parent.get_node("Sprite")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_state("idle")
@@ -16,7 +17,7 @@ func _ready():
 func state_logic(delta):
 	#ici parent est le joueur
 	
-	parent.handle_move_input()
+	parent.get_input()
 	parent.apply_gravity(delta)
 	if[states.idle, states.walking].has(state):
 		parent.apply_movement(parent.run_speed)
@@ -28,14 +29,16 @@ func state_logic(delta):
 func get_transition(delta):
 	match state:
 		states.idle:
-			if parent.velocity.x !=0:
+			#valeur à modifier si jamais on modifie la vitesse
+			if abs(parent.velocity.x) >=0.1:
 				return states.walking
 			elif Input.is_action_just_pressed("interact"):
 				return states.interacting
 			elif Input.is_action_pressed("crouch"):
 				return states.crouching
 		states.walking:
-			if parent.velocity.x ==0:
+			#valeur à modfifier si jamais on modifier la vitesse
+			if abs(parent.velocity.x) <=0.1:
 				return states.idle
 			elif Input.is_action_just_pressed("interact"):
 				return states.interacting
@@ -49,12 +52,12 @@ func get_transition(delta):
 		states.crouching:
 			if !Input.is_action_pressed("crouch") && parent.can_stand():
 				return states.idle
-			elif parent.velocity.x !=0:
+			elif abs(parent.velocity.x) >=0.1:
 				return states.crawling
 		states.crawling:
 			if !Input.is_action_pressed("crouch") && parent.can_stand():
 				return states.walking
-			elif parent.velocity.x ==0:
+			elif abs(parent.velocity.x) <=0.1:
 				return states.crouching
 	return null
 
@@ -67,10 +70,8 @@ func enter_state(new_state, old_state):
 		states.idle:
 			#plus tard on aura ici les animations du persos
 			affEtat.text="IDLE"
-			
 		states.walking:
 			affEtat.text="WALKING"
-			
 		states.interacting:
 			affEtat.text="INTERACTING"
 			

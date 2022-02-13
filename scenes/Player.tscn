@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://sprites/joueur-Imo.png" type="Texture" id=1]
+[ext_resource path="res://scripts/ActionStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://scripts/JoueurSM.gd" type="Script" id=3]
+[ext_resource path="res://sprites/test_lumiere.png" type="Texture" id=4]
+[ext_resource path="res://sprites/light_shadow_background.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Joueur/imo2.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -15,8 +18,17 @@ height = 34.0
 [node name="Joueur" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="bacground test" type="Sprite" parent="."]
+visible = false
+position = Vector2( 82, 0 )
+scale = Vector2( 1.205, 1 )
+texture = ExtResource( 5 )
+
+[node name="MouvementStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="ActionStateMachine" type="Node" parent="."]
+script = ExtResource( 1 )
 
 [node name="HitboxDebout" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1 )
@@ -27,8 +39,21 @@ position = Vector2( 0, 16 )
 shape = SubResource( 2 )
 disabled = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -50 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+
+[node name="Lampe" type="Light2D" parent="."]
+position = Vector2( 60, -24 )
+scale = Vector2( 0.426424, 1.06906 )
+texture = ExtResource( 4 )
+texture_scale = 0.5
+shadow_enabled = true
+
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 6 )
 
 [node name="AffEtat" type="RichTextLabel" parent="."]
 margin_left = -44.0
@@ -38,8 +63,3 @@ margin_bottom = -12.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -150 )
-current = true
-limit_left = 0

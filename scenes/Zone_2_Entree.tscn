@@ -139,7 +139,6 @@ tile_data = PoolIntArray( 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0
 [node name="Lampadaire" type="AnimatedSprite" parent="."]
 position = Vector2( 712, 448 )
 frames = SubResource( 10 )
-frame = 1
 speed_scale = 0.2
 playing = true
 

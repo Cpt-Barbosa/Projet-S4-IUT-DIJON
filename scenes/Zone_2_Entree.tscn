@@ -1,28 +1,12 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://sprites/Niveau/sol0.png" type="Texture" id=1]
-[ext_resource path="res://sprites/Niveau/fond-etoiles.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Garde.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/Niveau/Lampadaire.png" type="Texture" id=3]
-[ext_resource path="res://sprites/Niveau/Buisson2.png" type="Texture" id=4]
-[ext_resource path="res://sprites/sprite_garde.png" type="Texture" id=5]
-[ext_resource path="res://sprites/Niveau/fond-couleur.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Cachette.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/Niveau/fondtest.png" type="Texture" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/ObjetTest.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/ObjetPorte.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scripts/TestGarde.gd" type="Script" id=10]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 506.75, 10 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 107.5, 10 )
-
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 21.0
-height = 66.0
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 40.05
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -50,6 +34,15 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 } ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 10, 305 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 305, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 107.5, 10 )
+
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 3 )
@@ -70,71 +63,69 @@ animations = [ {
 
 [node name="Level" type="Node2D"]
 
-[node name="background" type="Sprite" parent="."]
-position = Vector2( 513, 313.5 )
-scale = Vector2( 1.31, 1.095 )
-texture = ExtResource( 6 )
+[node name="Fondtest" type="Sprite" parent="."]
+position = Vector2( 469, 130 )
+texture = ExtResource( 5 )
 
 [node name="Ambience" type="CanvasModulate" parent="."]
 z_index = -1
-color = Color( 0.784314, 0.784314, 0.784314, 1 )
+color = Color( 0.156863, 0.156863, 0.156863, 1 )
 
-[node name="ObjetTest" parent="." instance=ExtResource( 8 )]
-position = Vector2( 562, 549 )
+[node name="sol" type="TileMap" parent="."]
+tile_set = SubResource( 7 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 655355, 0, 0, 655356, 0, 0, 655357, 0, 0, 655358, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0 )
 
-[node name="ObjetPorte" parent="." instance=ExtResource( 9 )]
-position = Vector2( 839, 549 )
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 0, 295 )
+shape = SubResource( 11 )
 
 [node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2( 1800, 183 )
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2( 865, 1.25002 )
+position = Vector2( 1.50002, 1.00001 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="Porte" type="StaticBody2D" parent="."]
-position = Vector2( 868, 472 )
+position = Vector2( 1803, 485 )
 rotation = 1.5938
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Porte"]
 position = Vector2( -1, 0 )
 shape = SubResource( 3 )
 
+[node name="ObjetPorte" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1770, 556 )
+
 [node name="Joueur" parent="." instance=ExtResource( 7 )]
-position = Vector2( 327, 531 )
+position = Vector2( 62, 531 )
 run_speed = 100
 crawl_speed = 50
 g = 98
 
-[node name="GardeEx" type="KinematicBody2D" parent="."]
-position = Vector2( 386, 514 )
-script = ExtResource( 10 )
+[node name="Cachette" parent="." instance=ExtResource( 4 )]
+position = Vector2( 166, 545 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GardeEx"]
-position = Vector2( 3, 12 )
-shape = SubResource( 5 )
-disabled = true
+[node name="Cachette2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 546, 545 )
 
-[node name="Sprite" type="Sprite" parent="GardeEx"]
-texture = ExtResource( 5 )
+[node name="Cachette3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 903, 545 )
 
-[node name="BuissonEx" type="Area2D" parent="."]
-position = Vector2( 471, 549 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuissonEx"]
-shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="BuissonEx"]
-texture = ExtResource( 4 )
-
-[node name="etoile" type="Sprite" parent="."]
-position = Vector2( 259, 419 )
-texture = ExtResource( 2 )
-
-[node name="sol" type="TileMap" parent="."]
-tile_set = SubResource( 7 )
-format = 1
-tile_data = PoolIntArray( 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0 )
+[node name="Garde" parent="." instance=ExtResource( 2 )]
+position = Vector2( 495, 520 )
+min_x = 459
+max_x = 712
 
 [node name="Lampadaire" type="AnimatedSprite" parent="."]
 position = Vector2( 712, 448 )
@@ -142,5 +133,9 @@ frames = SubResource( 10 )
 speed_scale = 0.2
 playing = true
 
-[connection signal="body_entered" from="BuissonEx" to="Joueur" method="can_hide"]
-[connection signal="body_exited" from="BuissonEx" to="Joueur" method="cannot_hide"]
+[connection signal="body_entered" from="Cachette" to="Joueur" method="can_hide"]
+[connection signal="body_exited" from="Cachette" to="Joueur" method="cannot_hide"]
+[connection signal="body_entered" from="Cachette2" to="Joueur" method="can_hide"]
+[connection signal="body_exited" from="Cachette2" to="Joueur" method="cannot_hide"]
+[connection signal="body_entered" from="Cachette3" to="Joueur" method="can_hide"]
+[connection signal="body_exited" from="Cachette3" to="Joueur" method="cannot_hide"]

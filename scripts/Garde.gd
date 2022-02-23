@@ -28,7 +28,7 @@ func apply_movement():
 	velocity=move_and_slide(velocity, Vector2.UP)
 
 func is_seeing():
-	if !player.hidden && in_range:
+	if !player.hidden && in_range || player.hidden && in_range && player.flashlight.is_enabled():
 		see_player=true
 	else:
 		see_player=false

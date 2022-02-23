@@ -69,7 +69,6 @@ texture = ExtResource( 5 )
 
 [node name="Ambience" type="CanvasModulate" parent="."]
 z_index = -1
-color = Color( 0.156863, 0.156863, 0.156863, 1 )
 
 [node name="sol" type="TileMap" parent="."]
 tile_set = SubResource( 7 )
@@ -124,8 +123,8 @@ position = Vector2( 903, 545 )
 
 [node name="Garde" parent="." instance=ExtResource( 2 )]
 position = Vector2( 495, 520 )
-min_x = 459
-max_x = 712
+min_x = 270
+max_x = 720
 
 [node name="Lampadaire" type="AnimatedSprite" parent="."]
 position = Vector2( 712, 448 )

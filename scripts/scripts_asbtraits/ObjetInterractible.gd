@@ -5,14 +5,15 @@ class_name ObjetInteractible
 
 #variable a utilisé pour voir si le joueur peut intéragir avec l'objet ou pas 
 var object_entered = false
-onready var text = get_node("Texte")
+var shown_text="E"
+onready var text_node= get_node("Texte")
 #il faudra redéfinir la fonction process dans le script qui hérite de celui et mettre get_input() pour récupérer l'input du joueur
 func _process(delta):
 	get_input()
 	if(object_entered):
-		text.text="E"
+		text_node.text=shown_text
 	else:
-		text.clear()
+		text_node.clear()
 
 #si le joueur rentre dans la zone de collision de l'objet interactible on passe le booléan à true
 func _on_body_entered(body):

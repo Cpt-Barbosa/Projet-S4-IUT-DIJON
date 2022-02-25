@@ -3,6 +3,9 @@ extends ObjetInteractible
 var has_push = false
 var trou = "scenes/Zone-Caisse-tuto.tscn"
 
+func _ready():
+	shown_text="Pousser E"
+	
 func _process(delta):
 	if(has_push):
 		self.object_entered = false
@@ -23,6 +26,7 @@ func is_interacted():
 		get_tree().get_root().add_child(trou)
 		
 		
+
 
 
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grillage_coupe.png-2e70ccbec34a7fdb6e9e0f487e012010.stex"
+path="res://.import/tile_ext_ground_1.png-91f40aff1c636f81d661c9607d982a9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/grillage_coupe.png"
-dest_files=[ "res://.import/grillage_coupe.png-2e70ccbec34a7fdb6e9e0f487e012010.stex" ]
+source_file="res://sprites/Garde/tile_ext_ground_1.png"
+dest_files=[ "res://.import/tile_ext_ground_1.png-91f40aff1c636f81d661c9607d982a9f.stex" ]
 
 [params]
 

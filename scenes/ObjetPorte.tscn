@@ -6,5 +6,11 @@
 [node name="ObjetPorte" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Texte" parent="." index="2"]
+margin_left = -56.0
+margin_top = -137.0
+margin_right = 52.0
+margin_bottom = -97.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

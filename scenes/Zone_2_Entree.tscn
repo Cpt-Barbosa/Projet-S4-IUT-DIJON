@@ -1,113 +1,110 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://sprites/Niveau/sol0.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Tileset/sol_ext.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Garde.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/Niveau/Lampadaire.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Lampadaire.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Cachette.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sprites/Niveau/fondtest.png" type="Texture" id=5]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/Niveau/bg_forest.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Niveau/porte.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Joueur.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/Tileset/sol_int.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/ObjetPorte.tscn" type="PackedScene" id=9]
-
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="TileSet" id=7]
-0/name = "sol0.png 0"
-0/texture = ExtResource( 1 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 6 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 6 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
+[ext_resource path="res://scenes/TriggerNiveau.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/Niveau/porte_ouverte.png" type="Texture" id=11]
+[ext_resource path="res://scripts/TriggerCutsceneGarde.gd" type="Script" id=12]
+[ext_resource path="res://sprites/Tileset/grillage.tres" type="TileSet" id=14]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 10, 305 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 305, 10 )
+[sub_resource type="CircleShape2D" id=12]
+radius = 40.05
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 107.5, 10 )
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1446, 522 ) ]
+}
 
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 128, 256 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 128, 0, 128, 256 )
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="Animation" id=14]
+resource_name = "cutscene"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1446, 522 ), Vector2( 263, 522 ) ]
+}
 
 [node name="Level" type="Node2D"]
+position = Vector2( 10, -55 )
 
-[node name="Fondtest" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
 position = Vector2( 469, 130 )
 texture = ExtResource( 5 )
 
+[node name="Background2" type="Sprite" parent="."]
+position = Vector2( 1371, 129 )
+scale = Vector2( 0.988, 1 )
+texture = ExtResource( 5 )
+
 [node name="Ambience" type="CanvasModulate" parent="."]
+position = Vector2( -4, 0 )
 z_index = -1
+color = Color( 0.352941, 0.352941, 0.352941, 1 )
+
+[node name="bat" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+format = 1
+tile_data = PoolIntArray( 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 262170, 0, 0, 262171, 0, 0, 262172, 0, 0, 262173, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 327709, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 393244, 0, 0, 393245, 0, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 458780, 1, 0, 458781, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 1, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0 )
+
+[node name="grillage" type="TileMap" parent="."]
+tile_set = ExtResource( 14 )
+format = 1
+tile_data = PoolIntArray( 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 524288, 0, 0, 524289, 1, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0 )
 
 [node name="sol" type="TileMap" parent="."]
-tile_set = SubResource( 7 )
+tile_set = ExtResource( 1 )
 collision_layer = 2
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 655355, 0, 0, 655356, 0, 0, 655357, 0, 0, 655358, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0 )
+tile_data = PoolIntArray( 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0 )
 
-[node name="LeftWall" type="StaticBody2D" parent="."]
+[node name="MurGauche" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MurGauche"]
 position = Vector2( 0, 295 )
 shape = SubResource( 11 )
 
-[node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2( 1800, 183 )
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2( 1.50002, 1.00001 )
-rotation = 1.5708
-shape = SubResource( 2 )
-
-[node name="Porte" type="StaticBody2D" parent="."]
-position = Vector2( 1803, 485 )
-rotation = 1.5938
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Porte"]
-position = Vector2( -1, 0 )
-shape = SubResource( 3 )
-
 [node name="ObjetPorte" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1770, 556 )
+position = Vector2( 1454, 556 )
+
+[node name="PorteOuverte" type="Sprite" parent="."]
+position = Vector2( 1504, 512 )
+scale = Vector2( 0.516529, 0.512 )
+texture = ExtResource( 11 )
+
+[node name="Porte" type="Sprite" parent="."]
+position = Vector2( 1476, 512 )
+texture = ExtResource( 6 )
 
 [node name="Joueur" parent="." instance=ExtResource( 7 )]
-position = Vector2( 62, 531 )
+position = Vector2( 98, 530 )
 run_speed = 100
 crawl_speed = 50
 g = 98
@@ -116,21 +113,42 @@ g = 98
 position = Vector2( 166, 545 )
 
 [node name="Cachette2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 546, 545 )
+position = Vector2( 546, 540 )
 
 [node name="Cachette3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 903, 545 )
+position = Vector2( 903, 541 )
+
+[node name="Cachette4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1237, 541 )
+
+[node name="TriggerCutsceneGarde" type="Area2D" parent="Cachette4"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cachette4/TriggerCutsceneGarde"]
+shape = SubResource( 12 )
 
 [node name="Garde" parent="." instance=ExtResource( 2 )]
-position = Vector2( 495, 520 )
-min_x = 270
+position = Vector2( 495, 523 )
+min_x = 425
 max_x = 720
 
-[node name="Lampadaire" type="AnimatedSprite" parent="."]
-position = Vector2( 712, 448 )
-frames = SubResource( 10 )
-speed_scale = 0.2
-playing = true
+[node name="GardeImmobile" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1446, 522 )
+min_x = 1702
+max_x = 1702
+stop_time = 200000000
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GardeImmobile"]
+anims/RESET = SubResource( 13 )
+anims/cutscene = SubResource( 14 )
+
+[node name="Lampadaire" parent="." instance=ExtResource( 3 )]
+
+[node name="Lampadaire2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1302, 448 )
+
+[node name="TriggerNiveau" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1653, 514 )
 
 [connection signal="body_entered" from="Cachette" to="Joueur" method="can_hide"]
 [connection signal="body_exited" from="Cachette" to="Joueur" method="cannot_hide"]
@@ -138,3 +156,6 @@ playing = true
 [connection signal="body_exited" from="Cachette2" to="Joueur" method="cannot_hide"]
 [connection signal="body_entered" from="Cachette3" to="Joueur" method="can_hide"]
 [connection signal="body_exited" from="Cachette3" to="Joueur" method="cannot_hide"]
+[connection signal="body_entered" from="Cachette4" to="Joueur" method="can_hide"]
+[connection signal="body_exited" from="Cachette4" to="Joueur" method="cannot_hide"]
+[connection signal="body_entered" from="Cachette4/TriggerCutsceneGarde" to="Cachette4/TriggerCutsceneGarde" method="start_cutscene"]

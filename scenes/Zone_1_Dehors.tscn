@@ -1,56 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://sprites/Niveau/Caisse1.png" type="Texture" id=1]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/Niveau/caisse.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Tileset/sol_ext.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/Joueur.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/interractioncaisse.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sprites/Niveau/sol0.png" type="Texture" id=5]
-[ext_resource path="res://sprites/Niveau/grillage.png" type="Texture" id=6]
-[ext_resource path="res://sprites/Niveau/grillage_coupe.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Niveau/bg_forest.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Tileset/grillage.tres" type="TileSet" id=6]
+[ext_resource path="res://scenes/Lampadaire.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/CachetteTuto.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/TutoDeplacement.tscn" type="PackedScene" id=9]
 
-[sub_resource type="TileSet" id=8]
-0/name = "grillage.png 0"
-0/texture = ExtResource( 6 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-1/name = "grillage_coupe.png 1"
-1/texture = ExtResource( 7 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 64, 64 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-
-[sub_resource type="Animation" id=8]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 307, 550 ) ]
-}
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 10, 200 )
 
 [sub_resource type="Animation" id=9]
 resource_name = "déplacement"
@@ -82,57 +43,63 @@ tracks/0/keys = {
 "values": [ Vector2( 307, 550 ), Vector2( 217, 550 ) ]
 }
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="TileSet" id=7]
-0/name = "sol0.png 0"
-0/texture = ExtResource( 5 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 6 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 6 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-
 [node name="tuto_caisse" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 8 )
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.352941, 0.352941, 0.352941, 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 469, 130 )
+texture = ExtResource( 5 )
+
+[node name="MurGauche" type="StaticBody2D" parent="."]
+position = Vector2( 0, 438 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MurGauche"]
+shape = SubResource( 11 )
+
+[node name="MurDroit" type="StaticBody2D" parent="."]
+position = Vector2( 950, 438 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MurDroit"]
+shape = SubResource( 11 )
+
+[node name="sol" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
 format = 1
-tile_data = PoolIntArray( 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 1, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0 )
+tile_data = PoolIntArray( 655358, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0 )
+
+[node name="grillage" type="TileMap" parent="."]
+tile_set = ExtResource( 6 )
+format = 1
+tile_data = PoolIntArray( 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 1, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0 )
 
 [node name="interractioncaisse" parent="." instance=ExtResource( 4 )]
-position = Vector2( 307, 550 )
+position = Vector2( 755, 551 )
 
 [node name="Icon" type="Sprite" parent="interractioncaisse"]
 position = Vector2( -2, -6 )
 texture = ExtResource( 1 )
 
 [node name="déplacement" type="AnimationPlayer" parent="interractioncaisse"]
-anims/RESET = SubResource( 8 )
 "anims/déplacement" = SubResource( 9 )
 "anims/déplacement_inverse" = SubResource( 10 )
 
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
-position = Vector2( 119, 527 )
+position = Vector2( 67, 527 )
 run_speed = 100
 crawl_speed = 50
 
-[node name="sol2" type="TileMap" parent="."]
-tile_set = SubResource( 7 )
-format = 1
-tile_data = PoolIntArray( 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0 )
+[node name="CachetteTuto" parent="." instance=ExtResource( 8 )]
+position = Vector2( 465, 541 )
+
+[node name="TutoDeplacement" parent="." instance=ExtResource( 9 )]
+position = Vector2( 218, 530 )
+
+[node name="Lampadaire" parent="." instance=ExtResource( 7 )]
+position = Vector2( 886, 448 )
+
+[connection signal="body_entered" from="CachetteTuto" to="Joueur" method="can_hide"]
+[connection signal="body_entered" from="CachetteTuto" to="CachetteTuto" method="_on_body_entered"]
+[connection signal="body_exited" from="CachetteTuto" to="Joueur" method="cannot_hide"]
+[connection signal="body_exited" from="CachetteTuto" to="CachetteTuto" method="_on_body_exited"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/Tileset/sol_int.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/Joueur.tscn" type="PackedScene" id=2]
+
+[node name="Zone_3" type="Node2D"]
+
+[node name="sol" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0 )
+
+[node name="Joueur" parent="." instance=ExtResource( 2 )]
+position = Vector2( 79, 525 )

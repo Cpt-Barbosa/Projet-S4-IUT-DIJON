@@ -18,16 +18,22 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://scripts/scripts_asbtraits/StateMachine.gd"
+}, {
+"base": "Area2D",
+"class": "TriggerNiveau",
+"language": "GDScript",
+"path": "res://scripts/TriggerNiveau.gd"
 } ]
 _global_script_class_icons={
 "ObjetInteractible": "",
-"StateMachine": ""
+"StateMachine": "",
+"TriggerNiveau": ""
 }
 
 [application]
 
 config/name="MAIN PROJECT"
-run/main_scene="res://scenes/Zone_2_Entree.tscn"
+run/main_scene="res://scenes/Zone_1_Dehors.tscn"
 config/icon="res://icon.png"
 
 [display]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fond-etoiles.png-3eab588c23de973186632c46e2a0fc69.stex"
+path="res://.import/tile_ext_ground_0.png-ad041f5b92f16169de653425023961da.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/fond-etoiles.png"
-dest_files=[ "res://.import/fond-etoiles.png-3eab588c23de973186632c46e2a0fc69.stex" ]
+source_file="res://sprites/Niveau/tile_ext_ground_0.png"
+dest_files=[ "res://.import/tile_ext_ground_0.png-ad041f5b92f16169de653425023961da.stex" ]
 
 [params]
 

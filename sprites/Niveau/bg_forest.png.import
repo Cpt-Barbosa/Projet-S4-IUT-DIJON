@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fondtest.png-cab2095e881688e6ece9139930e1dca2.stex"
+path="res://.import/bg_forest.png-9ea5b23821157136bc8f62993e90ff93.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/fondtest.png"
-dest_files=[ "res://.import/fondtest.png-cab2095e881688e6ece9139930e1dca2.stex" ]
+source_file="res://sprites/Niveau/bg_forest.png"
+dest_files=[ "res://.import/bg_forest.png-9ea5b23821157136bc8f62993e90ff93.stex" ]
 
 [params]
 

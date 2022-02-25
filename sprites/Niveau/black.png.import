@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fond-lune.png-a1a6372a1df56628376cc683a2b658a7.stex"
+path="res://.import/black.png-bf956bbe74b62892b38c5fc2de90d942.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/fond-lune.png"
-dest_files=[ "res://.import/fond-lune.png-a1a6372a1df56628376cc683a2b658a7.stex" ]
+source_file="res://sprites/Niveau/black.png"
+dest_files=[ "res://.import/black.png-bf956bbe74b62892b38c5fc2de90d942.stex" ]
 
 [params]
 

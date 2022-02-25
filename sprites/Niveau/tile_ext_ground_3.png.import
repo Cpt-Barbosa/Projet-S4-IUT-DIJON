@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fond-couleur.png-5e9fdb0a50cc4e445dfc3f8b243f5252.stex"
+path="res://.import/tile_ext_ground_3.png-761dc5b0eeb4ea43d2bf7104d313cdaf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/fond-couleur.png"
-dest_files=[ "res://.import/fond-couleur.png-5e9fdb0a50cc4e445dfc3f8b243f5252.stex" ]
+source_file="res://sprites/Niveau/tile_ext_ground_3.png"
+dest_files=[ "res://.import/tile_ext_ground_3.png-761dc5b0eeb4ea43d2bf7104d313cdaf.stex" ]
 
 [params]
 

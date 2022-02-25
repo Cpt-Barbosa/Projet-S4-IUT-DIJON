@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sol2.png-c949f988ffb3aeb5c72bb6292ea0a9b0.stex"
+path="res://.import/tile_ext_ground_3.png-248451d24e1cad172c1a6d2159a1b3cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/sol2.png"
-dest_files=[ "res://.import/sol2.png-c949f988ffb3aeb5c72bb6292ea0a9b0.stex" ]
+source_file="res://sprites/Garde/tile_ext_ground_3.png"
+dest_files=[ "res://.import/tile_ext_ground_3.png-248451d24e1cad172c1a6d2159a1b3cd.stex" ]
 
 [params]
 

@@ -24,8 +24,10 @@ export var max_tour=2
 export var stop_time=2
 
 func apply_movement():
-	velocity.x=-speed if is_moving_left else speed
-	velocity=move_and_slide(velocity, Vector2.UP)
+	#si le garde à le nom garde immobilequelquechose il ne bougera jamais
+	if !name.match("GardeImmobile*"):
+		velocity.x=-speed if is_moving_left else speed
+		velocity=move_and_slide(velocity, Vector2.UP)
 
 func is_seeing():
 	if !player.hidden && in_range || player.hidden && in_range && player.flashlight.is_enabled():
@@ -34,10 +36,12 @@ func is_seeing():
 		see_player=false
 		
 func detect_turn():
-	if position.x <=min_x || position.x >=max_x:
-		scale.x=-scale.x
-		is_moving_left= !is_moving_left
-		i+=1
+	#si le garde à le nom garde immobilequelquechose et ne tournera jamais
+	if !name.match("GardeImmobile*"):
+		if position.x <=min_x || position.x >=max_x:
+			scale.x=-scale.x
+			is_moving_left= !is_moving_left
+			i+=1
 
 func _on_Sight_body_entered(body):
 	if body == player:

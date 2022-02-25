@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sol1.png-317acb393f5498597930eed3b974f726.stex"
+path="res://.import/porte_ouverte.png-c1f8b3e24131288fe48eea5e35a23771.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/sol1.png"
-dest_files=[ "res://.import/sol1.png-317acb393f5498597930eed3b974f726.stex" ]
+source_file="res://sprites/Niveau/porte_ouverte.png"
+dest_files=[ "res://.import/porte_ouverte.png-c1f8b3e24131288fe48eea5e35a23771.stex" ]
 
 [params]
 

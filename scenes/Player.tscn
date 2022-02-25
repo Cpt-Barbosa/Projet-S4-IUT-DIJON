@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scripts/ActionStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://sprites/test_lumiere.png" type="Texture" id=4]
 [ext_resource path="res://sprites/light_shadow_background.png" type="Texture" id=5]
 [ext_resource path="res://sprites/Joueur/imo2.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Joueur/baisser_mouv_2.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Joueur/deplacement1.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Joueur/deplacement2.png" type="Texture" id=9]
+[ext_resource path="res://sprites/Joueur/deplacement4.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Joueur/joueur-imo-sol.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Joueur/imo3.png" type="Texture" id=12]
+[ext_resource path="res://sprites/Joueur/baisser_mouv_1.png" type="Texture" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -14,6 +21,128 @@ height = 68.0
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 15.0
 height = 34.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 12 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Marcher"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 6 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Ramper"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Se baisser"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 11 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Marcher"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Ramper"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Se baisser"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=18]
+states/Idle/node = SubResource( 8 )
+states/Idle/position = Vector2( 196, 104 )
+states/Marcher/node = SubResource( 9 )
+states/Marcher/position = Vector2( 402, 168 )
+states/Ramper/node = SubResource( 10 )
+states/Ramper/position = Vector2( 618, 31 )
+"states/Se baisser/node" = SubResource( 11 )
+"states/Se baisser/position" = Vector2( 402, 31 )
+transitions = [ "Idle", "Se baisser", SubResource( 12 ), "Se baisser", "Ramper", SubResource( 13 ), "Ramper", "Se baisser", SubResource( 14 ), "Se baisser", "Idle", SubResource( 15 ), "Idle", "Marcher", SubResource( 16 ), "Marcher", "Idle", SubResource( 17 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
 
 [node name="Joueur" type="KinematicBody2D"]
 collision_mask = 2
@@ -64,3 +193,15 @@ margin_bottom = -12.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 3 )
+anims/Marcher = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+anims/Ramper = SubResource( 6 )
+"anims/Se baisser" = SubResource( 7 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 18 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 19 )

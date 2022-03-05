@@ -12,6 +12,7 @@ scale = Vector2( 1.313, 1.172 )
 texture = ExtResource( 3 )
 
 [node name="Texte" parent="." index="2"]
+light_mask = 2
 margin_left = -99.0
 margin_top = -120.0
 margin_right = 103.0

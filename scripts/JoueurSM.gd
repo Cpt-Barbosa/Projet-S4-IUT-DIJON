@@ -2,6 +2,7 @@ extends StateMachine
 
 onready var affEtat = parent.get_node("AffEtat")
 onready var sprite = parent.get_node("Sprite")
+onready var animation_player= parent.get_node("AnimationPlayer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_state("idle")
@@ -70,8 +71,10 @@ func enter_state(new_state, old_state):
 		states.idle:
 			#plus tard on aura ici les animations du persos
 			affEtat.text="IDLE"
+			animation_player.play("Idle")
 		states.walking:
 			affEtat.text="WALKING"
+			animation_player.play("Marcher")
 		states.interacting:
 			affEtat.text="INTERACTING"
 			

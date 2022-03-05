@@ -11,11 +11,12 @@ func start_cutscene(body):
 		#self is who respond to the callback
 		#_on_timer_timeout is the callback, can have any name
 		add_child(timer) #to process
-		timer.start() #to start# Replace with function body.
+		timer.start(3) #to start# Replace with function body.
 		
 		
 
 func move_guard():
 	timer.stop()
-	garde.get_node("AnimationPlayer").play("cutscene")
+	get_parent().get_parent().get_node("CutscenePlayer").play("cutscene")
+	get_tree().get_root().set_disable_input(true)
 	queue_free()

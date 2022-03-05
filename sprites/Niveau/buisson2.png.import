@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/porte.png-dc63e0e1e5662cd305380157f94559d8.stex"
+path="res://.import/buisson2.png-bc57c21c0a3d1d875ea27e7ca0e2308b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/porte.png"
-dest_files=[ "res://.import/porte.png-dc63e0e1e5662cd305380157f94559d8.stex" ]
+source_file="res://sprites/Niveau/buisson2.png"
+dest_files=[ "res://.import/buisson2.png-bc57c21c0a3d1d875ea27e7ca0e2308b.stex" ]
 
 [params]
 

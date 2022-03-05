@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="Texte" parent="." index="2"]
+light_mask = 2
 margin_left = -56.0
 margin_top = -137.0
 margin_right = 52.0

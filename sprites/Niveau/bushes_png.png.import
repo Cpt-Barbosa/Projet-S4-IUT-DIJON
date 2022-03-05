@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/porte.png-dc63e0e1e5662cd305380157f94559d8.stex"
+path="res://.import/bushes_png.png-da6280715cb63ae80f5dbb6f9b09bdd1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Niveau/porte.png"
-dest_files=[ "res://.import/porte.png-dc63e0e1e5662cd305380157f94559d8.stex" ]
+source_file="res://sprites/Niveau/bushes_png.png"
+dest_files=[ "res://.import/bushes_png.png-da6280715cb63ae80f5dbb6f9b09bdd1.stex" ]
 
 [params]
 

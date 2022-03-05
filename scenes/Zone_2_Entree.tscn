@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://sprites/Tileset/sol_ext.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Garde.tscn" type="PackedScene" id=2]
@@ -12,18 +12,19 @@
 [ext_resource path="res://scenes/TriggerNiveau.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/Niveau/porte_ouverte.png" type="Texture" id=11]
 [ext_resource path="res://scripts/TriggerCutsceneGarde.gd" type="Script" id=12]
+[ext_resource path="res://sprites/Niveau/lum_texte.png" type="Texture" id=13]
 [ext_resource path="res://sprites/Tileset/grillage.tres" type="TileSet" id=14]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 10, 305 )
 
 [sub_resource type="CircleShape2D" id=12]
-radius = 40.05
+radius = 15.0
 
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("GardeImmobile:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -37,18 +38,52 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=14]
 resource_name = "cutscene"
-length = 10.0
+length = 9.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("GardeImmobile:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 9 ),
+"times": PoolRealArray( 3, 9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1446, 522 ), Vector2( 263, 522 ) ]
+"values": [ Vector2( 1446, 522 ), Vector2( 257, 524 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Garde2Bubble")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+}, {
+"args": [  ],
+"method": "hide"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Garde1Bubble")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+}, {
+"args": [  ],
+"method": "hide"
+} ]
 }
 
 [node name="Level" type="Node2D"]
@@ -104,7 +139,7 @@ position = Vector2( 1476, 512 )
 texture = ExtResource( 6 )
 
 [node name="Joueur" parent="." instance=ExtResource( 7 )]
-position = Vector2( 98, 530 )
+position = Vector2( 1076, 523 )
 run_speed = 100
 crawl_speed = 50
 g = 98
@@ -121,10 +156,10 @@ position = Vector2( 903, 541 )
 [node name="Cachette4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1237, 541 )
 
-[node name="TriggerCutsceneGarde" type="Area2D" parent="Cachette4"]
+[node name="TriggerCutscene" type="Area2D" parent="Cachette4"]
 script = ExtResource( 12 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cachette4/TriggerCutsceneGarde"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cachette4/TriggerCutscene"]
 shape = SubResource( 12 )
 
 [node name="Garde" parent="." instance=ExtResource( 2 )]
@@ -134,13 +169,6 @@ max_x = 720
 
 [node name="GardeImmobile" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1446, 522 )
-min_x = 1702
-max_x = 1702
-stop_time = 200000000
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GardeImmobile"]
-anims/RESET = SubResource( 13 )
-anims/cutscene = SubResource( 14 )
 
 [node name="Lampadaire" parent="." instance=ExtResource( 3 )]
 
@@ -150,6 +178,41 @@ position = Vector2( 1302, 448 )
 [node name="TriggerNiveau" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1653, 514 )
 
+[node name="CutscenePlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 13 )
+anims/cutscene = SubResource( 14 )
+
+[node name="Garde1Bubble" type="RichTextLabel" parent="."]
+visible = false
+light_mask = 2
+margin_left = 988.0
+margin_top = 403.0
+margin_right = 1134.0
+margin_bottom = 443.0
+text = "Hey viens voir la caisse à bouger !"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Garde2Bubble" type="RichTextLabel" parent="."]
+visible = false
+light_mask = 2
+margin_left = 1421.0
+margin_top = 433.0
+margin_right = 1505.0
+margin_bottom = 473.0
+text = "J'arrive !"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 1302.63, 376.851 )
+rotation = -0.000916958
+scale = Vector2( 1.12583, 3.0317 )
+texture = ExtResource( 13 )
+range_item_cull_mask = 2
+
 [connection signal="body_entered" from="Cachette" to="Joueur" method="can_hide"]
 [connection signal="body_exited" from="Cachette" to="Joueur" method="cannot_hide"]
 [connection signal="body_entered" from="Cachette2" to="Joueur" method="can_hide"]
@@ -158,4 +221,4 @@ position = Vector2( 1653, 514 )
 [connection signal="body_exited" from="Cachette3" to="Joueur" method="cannot_hide"]
 [connection signal="body_entered" from="Cachette4" to="Joueur" method="can_hide"]
 [connection signal="body_exited" from="Cachette4" to="Joueur" method="cannot_hide"]
-[connection signal="body_entered" from="Cachette4/TriggerCutsceneGarde" to="Cachette4/TriggerCutsceneGarde" method="start_cutscene"]
+[connection signal="body_entered" from="Cachette4/TriggerCutscene" to="Cachette4/TriggerCutscene" method="start_cutscene"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://sprites/Niveau/caisse.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Tileset/sol_ext.tres" type="TileSet" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://scenes/Lampadaire.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/CachetteTuto.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/TutoDeplacement.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/Niveau/lits.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Niveau/test.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Niveau/lum_texte.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 10, 200 )
@@ -91,13 +94,29 @@ run_speed = 100
 crawl_speed = 50
 
 [node name="CachetteTuto" parent="." instance=ExtResource( 8 )]
-position = Vector2( 465, 541 )
+position = Vector2( 612, 538 )
 
 [node name="TutoDeplacement" parent="." instance=ExtResource( 9 )]
 position = Vector2( 218, 530 )
 
 [node name="Lampadaire" parent="." instance=ExtResource( 7 )]
 position = Vector2( 886, 448 )
+
+[node name="Lits" type="Sprite" parent="."]
+position = Vector2( 393, 485 )
+scale = Vector2( 2.75, 2.74219 )
+texture = ExtResource( 10 )
+
+[node name="Test" type="Sprite" parent="."]
+position = Vector2( 1270, 76 )
+scale = Vector2( 2.90918, 3.12744 )
+texture = ExtResource( 11 )
+
+[node name="LumTexte" type="Light2D" parent="."]
+position = Vector2( 628, 475 )
+scale = Vector2( 1.47416, 2.41429 )
+texture = ExtResource( 12 )
+range_item_cull_mask = 2
 
 [connection signal="body_entered" from="CachetteTuto" to="Joueur" method="can_hide"]
 [connection signal="body_entered" from="CachetteTuto" to="CachetteTuto" method="_on_body_entered"]

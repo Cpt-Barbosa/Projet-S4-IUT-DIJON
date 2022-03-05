@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scripts/ActionStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://sprites/Joueur/joueur-imo-sol.png" type="Texture" id=11]
 [ext_resource path="res://sprites/Joueur/imo3.png" type="Texture" id=12]
 [ext_resource path="res://sprites/Joueur/baisser_mouv_1.png" type="Texture" id=13]
+[ext_resource path="res://sprites/Joueur/imo1.png" type="Texture" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -36,12 +37,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ), ExtResource( 12 ) ]
+"values": [ ExtResource( 14 ), ExtResource( 12 ) ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "Marcher"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -73,6 +75,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "Ramper"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -176,7 +179,8 @@ zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
 
 [node name="Lampe" type="Light2D" parent="."]
-position = Vector2( 60, -24 )
+position = Vector2( 61, -23 )
+rotation = -0.00262381
 scale = Vector2( 0.426424, 1.06906 )
 texture = ExtResource( 4 )
 texture_scale = 0.5

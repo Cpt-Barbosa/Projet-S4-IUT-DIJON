@@ -11,6 +11,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="Texte" type="RichTextLabel" parent="."]
+light_mask = 2
 margin_left = -3.0
 margin_top = -38.0
 margin_right = 37.0

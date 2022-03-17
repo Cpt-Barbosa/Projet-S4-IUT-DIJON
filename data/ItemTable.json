@@ -1,0 +1,26 @@
+{
+  "Sourire": {
+    "ItemAttack": 999,
+    "ItemDefense": 0,
+    "ItemWeight": 0,
+    "ItemDurability": 999
+  },
+  "test": {
+    "ItemAttack": 4,
+    "ItemDefense": 120,
+    "ItemWeight": 11,
+    "ItemDurability": 5146
+  },
+  "AAAAA": {
+    "ItemAttack": 41,
+    "ItemDefense": 4,
+    "ItemWeight": 1,
+    "ItemDurability": 444
+  },
+  "Kiwi": {
+    "ItemAttack": 100000,
+    "ItemDefense": 25,
+    "ItemWeight": 20,
+    "ItemDurability": 1
+  }
+}

@@ -80,11 +80,13 @@ func enter_state(new_state, old_state):
 			
 		states.crouching:
 			affEtat.text="CROUCHING"
+			animation_player.play("Se baisser")
 			if(old_state != states.crawling):
 				parent.on_crouch()
 			
 		states.crawling:
 			affEtat.text="CRAWLING"
+			animation_player.play("Ramper")
 			if(old_state != states.crouching):
 				parent.on_crouch()
 			

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Test_marche_interieur.wav-863bb6d366e4cbf0fb4673fd0985418c.sample"
+
+[deps]
+
+source_file="res://scripts/Test_marche_interieur.wav"
+dest_files=[ "res://.import/Test_marche_interieur.wav-863bb6d366e4cbf0fb4673fd0985418c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

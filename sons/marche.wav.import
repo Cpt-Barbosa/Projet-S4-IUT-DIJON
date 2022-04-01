@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/marche.wav-bafa74ef8569e234de2ecd572badc0ea.sample"
+
+[deps]
+
+source_file="res://sons/marche.wav"
+dest_files=[ "res://.import/marche.wav-bafa74ef8569e234de2ecd572badc0ea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

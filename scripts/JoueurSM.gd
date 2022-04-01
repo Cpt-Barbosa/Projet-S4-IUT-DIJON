@@ -3,6 +3,7 @@ extends StateMachine
 onready var affEtat = parent.get_node("AffEtat")
 onready var sprite = parent.get_node("Sprite")
 onready var animation_player= parent.get_node("AnimationPlayer")
+onready var audioStreamP = parent.get_node("AudioStreamPlayer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_state("idle")
@@ -72,9 +73,11 @@ func enter_state(new_state, old_state):
 			#plus tard on aura ici les animations du persos
 			affEtat.text="IDLE"
 			animation_player.play("Idle")
+			audioStreamP.stop()
 		states.walking:
 			affEtat.text="WALKING"
 			animation_player.play("Marcher")
+			audioStreamP.play()
 		states.interacting:
 			affEtat.text="INTERACTING"
 			
@@ -82,11 +85,13 @@ func enter_state(new_state, old_state):
 			affEtat.text="CROUCHING"
 			if(old_state != states.crawling):
 				parent.on_crouch()
+				audioStreamP.stop()
 			
 		states.crawling:
 			affEtat.text="CRAWLING"
 			if(old_state != states.crouching):
 				parent.on_crouch()
+				audioStreamP.stop()
 			
 
 #fonction qui gère les changements lorsqu'on quitte un état
